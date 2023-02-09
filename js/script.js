@@ -33,11 +33,13 @@ const renderPokemon = async (pokemon) => {
         input.value = '';
         searchPokemon = data.id;
     } else {
-        pokemonImage.style.display = 'none';
-        pokemonName.innerHTML = 'Not found :c';
-        pokemonNumber.innerHTML = '';
+        const datano = await fetchPokemon('132')
+        pokemonImage.style.display = 'block';
+        pokemonImage.src = datano['sprites']['versions']['generation-v']['black-white']['animated']['front_default'];
+        pokemonName.innerHTML = datano.name;
+        pokemonNumber.innerHTML = datano.id;
         input.value = '';
-        searchPokemon = 0
+        searchPokemon = datano.id;
     }
 }
 
